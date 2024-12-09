@@ -1,0 +1,118 @@
+1. Total Number of Stores by Country
+      SELECT 
+    Country, 
+    COUNT(DISTINCT StoreKey) AS Total_Stores
+FROM 
+    store_orders
+GROUP BY 
+    Country
+ORDER BY 
+    Total_Stores DESC;
+
+2. Total Orders by Customer
+      SELECT 
+    CustomerKey, 
+    COUNT(DISTINCT Order_Number) AS Total_Orders
+FROM 
+    store_orders
+GROUP BY 
+    CustomerKey
+ORDER BY 
+    Total_Orders DESC;
+
+
+3.Orders by Currency Code
+     SELECT 
+    Currency_Code, 
+    COUNT(DISTINCT Order_Number) AS Total_Orders
+FROM 
+    store_orders
+GROUP BY 
+    Currency_Code
+ORDER BY 
+    Total_Orders DESC;
+
+4.Most Active Customers by Number of Orders
+     SELECT 
+    CustomerKey, 
+    COUNT(DISTINCT Order_Number) AS Total_Orders
+FROM 
+    store_orders
+GROUP BY 
+    CustomerKey
+ORDER BY 
+    Total_Orders DESC
+LIMIT 10;
+
+
+5.Stores Opened Before a Specific Date
+      SELECT 
+    StoreKey, 
+    Country, 
+    State, 
+    Open_Date
+FROM 
+    store_orders
+WHERE 
+    Open_Date < '2020-01-01'
+ORDER BY 
+    Open_Date ASC;
+
+6.Total Products by Gender
+     SELECT 
+    Gender, 
+    COUNT(Name) AS Total_Products
+FROM 
+    combined_table
+GROUP BY 
+    Gender
+ORDER BY 
+    Total_Products DESC;
+
+7.Number of Products in Each City
+    SELECT 
+    City, 
+    COUNT(Name) AS Product_Count
+FROM 
+    combined_table
+GROUP BY 
+    City
+ORDER BY 
+    Product_Count DESC;
+
+8.Product Count by Category and Subcategory
+     SELECT 
+    Category, 
+    Subcategory, 
+    COUNT(Name) AS Product_Count
+FROM 
+    combined_table
+GROUP BY 
+    Category, Subcategory
+ORDER BY 
+    Product_Count DESC;
+
+9.Gender-Based Customer Count Analysis create query
+     SELECT 
+    Gender, 
+    COUNT(DISTINCT CustomerKey) AS Customer_Count
+FROM 
+    combined_table
+GROUP BY 
+    Gender
+ORDER BY 
+    Customer_Count DESC;
+
+10.Least Frequent Products Analysis  create query
+     SELECT 
+    `Product Name`, 
+    COUNT(*) AS Product_Count
+FROM 
+    combined_table
+GROUP BY 
+    `Product Name`
+ORDER BY 
+    Product_Count ASC
+LIMIT 5;
+
+
